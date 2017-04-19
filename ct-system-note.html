@@ -1,4 +1,9 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-form/iron-form.html">
+<link rel="import" href="../iron-autogrow-textarea/iron-autogrow-textarea.html">
+
+<link rel="import" href="../shared-styles/ct-application-theme.html">
 
 <!--
 `ct-system-note`
@@ -13,22 +18,114 @@ Element to view / create notes on for use by admin staff on the Centular platfor
       :host {
         display: block;
       }
+
+      iron-autogrow-textarea {
+        width: 100%;
+      }
+
     </style>
-    <h2>Hello [[prop1]]</h2>
+
+    <div class="container-fluid">
+
+      <template is="dom-repeat" id="noteContainer" items="{{notes}}">
+
+        <div class="note">
+
+          <div class="row">
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <div class="text-container">
+                  <label aria-hidden="true">Date Created</label>
+                  <div>[[item.date]]</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <div class="text-container">
+                  <label aria-hidden="true">Created By</label>
+                  <div>[[item.name]]</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-xs-12">
+              <div class="form-group">
+                <div class="text-container">
+                  <label aria-hidden="true">Message</label>
+                  <div>
+                    <p>
+                      [[item.message]]
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </template>
+
+      <form is="iron-form" action="">
+        <div class="row">
+          <div class="col-xs-12">
+            <iron-autogrow-textarea rows="4" placeholder="enter message"></iron-autogrow-textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <paper-button class="btn btn-primary" raised>New Note</paper-button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+
+
   </template>
 
   <script>
-    Polymer({
+      Polymer({
 
-      is: 'ct-system-note',
+          is: 'ct-system-note',
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'ct-system-note',
-        },
-      },
+          properties: {
+              notes : {
+                  type: Array,
+                  value: [
+                      {
+                          'date' : '01/04/2017',
+                          'name' : 'John Doe',
+                          'message' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, aspernatur beatae, dicta dolorum, illo minima molestias nam quae quidem similique sunt tempore ullam velit. Accusamus aut natus odit quibusdam repudiandae!'
+                      },
+                      {
+                          'date' : '01/04/2017',
+                          'name' : 'John Doe',
+                          'message' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, aspernatur beatae, dicta dolorum, illo minima molestias nam quae quidem similique sunt tempore ullam velit. Accusamus aut natus odit quibusdam repudiandae!'
+                      },
+                      {
+                          'date' : '01/04/2017',
+                          'name' : 'John Doe',
+                          'message' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, aspernatur beatae, dicta dolorum, illo minima molestias nam quae quidem similique sunt tempore ullam velit. Accusamus aut natus odit quibusdam repudiandae!'
+                      },
+                      {
+                          'date' : '01/04/2017',
+                          'name' : 'John Doe',
+                          'message' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, aspernatur beatae, dicta dolorum, illo minima molestias nam quae quidem similique sunt tempore ullam velit. Accusamus aut natus odit quibusdam repudiandae!'
+                      }
+                  ]
+              }
+          },
 
-    });
+      });
   </script>
 </dom-module>
