@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>ct-system-note test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../ct-system-note.html">
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <ct-system-note></ct-system-note>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('ct-system-note', function() {
+        test('instantiating the element works', function() {
+          var element = fixture('basic');
+          assert.equal(element.is, 'ct-system-note');
+        });
+      });
+    </script>
+  </body>
+</html>
